@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[ProductController::class,'getProduct']);
+Route::get('/',[ProductController::class,'getProduct'])->name('product.index');
+Route::get('/signup',[UserController::class,'getSignUp'])->name('user.signup');
+Route::post('/signup',[UserController::class,'postSignUp'])->name('user.signup');
