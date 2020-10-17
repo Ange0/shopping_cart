@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[ProductController::class,'getProduct'])->name('product.index');
 Route::get('/add-to-cart/{id}',[ProductController::class,'getAddToCart'])->name('product.addToCart');
+Route::get('/shopping-cart',[ProductController::class,'getCart'])->name('product.shoppingCart');
+
 Route::group(['prefix' => 'user'],function(){
     Route::group(['middleware'],function(){
         Route::get('/signup',[UserController::class,'getSignUp'])->name('user.signup');

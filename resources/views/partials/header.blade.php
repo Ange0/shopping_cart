@@ -8,11 +8,17 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-      <a class="navbar-brand" href="#">{{ config('app.name')}}</a>
+      <a class="navbar-brand" href="{{ route('product.index') }}">{{ config('app.name')}}</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="./"><i class="fa fa-shopping-cart"></i> Shopping cart<span class="sr-only">(current)</span></a></li>
+          <li class="active">
+            <a href="{{route('product.shoppingCart')}} "><i class="fa fa-shopping-cart"></i>
+               Shopping cart 
+            <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : ''}}</span>
+               <span class="sr-only">(current)</span>
+            </a>
+          </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> User Account<span class="caret"></span></a>
             <ul class="dropdown-menu">
