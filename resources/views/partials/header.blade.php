@@ -11,15 +11,19 @@
       <a class="navbar-brand" href="#">{{ config('app.name')}}</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
-       
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="./"><i class="fa fa-shopping-cart"></i> Shopping cart<span class="sr-only">(current)</span></a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> User Account<span class="caret"></span></a>
             <ul class="dropdown-menu">
-            <li><a href="{{ route('user.signup') }}">Signup</a></li>
-              <li><a  href="{{ route('user.signin') }}">Signin</a></li>
-              
+              @if(Auth::check())
+                <li><a  href="{{ route('user.profile') }}">User Profile</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a  href="{{ route('user.logout') }}">Logout</a></li>
+              @else
+                <li><a href="{{ route('user.signup') }}">Signup</a></li>
+                <li><a  href="{{ route('user.signin') }}">Signin</a></li>
+              @endIf
             </ul>
           </li>
         </ul>

@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+    Laravel SignIn
+@endsection
 @section('content')
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
