@@ -17,7 +17,7 @@
                 <p class="text-justify text-muted" >{{ $product->description }}</p>
             <p class="price">Price :{{ $product->price }}€</p>
                 <div>
-                    <a href="#" class="btn btn-success" role="button"> Add card</a>
+                <a href="{{ route('product.addToCart',['id'=> $product->id]) }}" class="btn btn-success" role="button"> Add card</a>
                 {{--  <a href="#" class="btn btn-default" role="button">Button</a> --}}
                 </div>
             </div>
