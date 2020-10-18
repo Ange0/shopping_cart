@@ -32,7 +32,7 @@
         </div>
         <div class="row">
             <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-">
-                <button class="btn btn-primary">Checkout</button>
+            <a href=" {{ route('checkout') }} " class="btn btn-primary">Checkout</a>
             </div>
         </div>
     @else
