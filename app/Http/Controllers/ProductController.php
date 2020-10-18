@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Stripe\Stripe;
+use Stripe\Charge;
 use Session;
 class ProductController extends Controller
 {
@@ -42,5 +44,25 @@ class ProductController extends Controller
         $cart = new Cart($oldCart);
         $total = $cart->totalPrice;
         return view("shop.checkout",['total' => $total]);
+    }
+    public function postCheckout(Request $request){
+        if(!$request->session()->has('cart')){
+            return redirect()->route("product.shoppingCart");
+        }
+        $oldCart = $request->session()->get('cart');
+        $cart = new Cart($oldCart);
+        Stripe::setApiKey('sk_test_51HdbNoIvcdlShppOjkPFKAPYD39qtmkbZUxUGddiFt71Wh5Ho50giDRquLfPLQOUrxe7usDISgvqHvBHorOOu1zs006WdsPJIx');
+        try {
+            Charge::create([
+                "amount" => $cart->totalPrice * 100,
+                "currency" => "usd",
+                "source" => $request->input('stripeToken'),
+                "description" => "Test charge"
+            ]);
+        } catch (\Exception $e) {
+            return  redirect()->route('checkout')->with('error',$e->getMessage());
+        }
+        $request->session()->forget('cart');
+        return redirect()->route('product.index')->with('success','SuccessFully purcharsed products !');
     }
 }

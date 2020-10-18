@@ -1,4 +1,4 @@
-Stripe.setPublishableKey('pk_test_TYoopk_test_51HdbNoIvcdlShppO4SJP9Z8KgbPMglxzUMtB9Dm2i4XzpGeOPsVoy703ViJs1yApwSXihnCwpyOXjbvA00lazyS800guxVXZAAMQauvdEDq54NiTphI7jx');
+Stripe.setPublishableKey('pk_test_51HdbNoIvcdlShppO4SJP9Z8KgbPMglxzUMtB9Dm2i4XzpGeOPsVoy703ViJs1yApwSXihnCwpyOXjbvA00lazyS800guxVXZAA');
 var $form = $('#checkout-form');
 var $error =  $('#charge-error')
 $form.submit((event)=>{

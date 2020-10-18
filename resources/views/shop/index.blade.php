@@ -4,7 +4,16 @@
     List Products
 @endsection
 @section('content')
-
+    @if( Session::has('success'))
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+                <div id="charge-message" class="alert alert-success " >
+                    {{ Session::get('success')}}
+                </div>
+            </div>
+        </div>
+    @endIf
+    
    @foreach ($products as $product)
     <div class="row">
        
