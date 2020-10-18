@@ -7,7 +7,8 @@
 <div class="row">
     <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
         <h1>Checkout</h1>
-    <h4>Your total : ${{ $total }}</h4>
+        <h4>Your total : ${{ $total }}</h4>
+    <div id="charge-error" class="alert alert-danger {{ !Session::has('error') ? 'hidden' : '' }}">{{ Session::get('error') }}</div>
         <form action=" {{ route('checkout') }} " method="POST" id="checkout-form">
             @csrf
             <div class="row">
@@ -57,3 +58,7 @@
     </div>
 </div>
 @endSection
+@section('scripts')
+    <script src="https://js.stripe.com/v2/"></script>
+    <script src=" {{ URL::to('js/checkout.js') }}"></script>
+@endsection
