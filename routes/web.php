@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[ProductController::class,'getProduct'])->name('product.index');
 Route::get('/add-to-cart/{id}',[ProductController::class,'getAddToCart'])->name('product.addToCart');
+Route::get('/reduce/{id}',[ProductController::class,'getReduceByOne'])->name('product.reduceByOne');
+Route::get('/remove/{id}',[ProductController::class,'getRemoveItem'])->name('product.remove');
+
 Route::get('/shopping-cart',[ProductController::class,'getCart'])->name('product.shoppingCart');
 Route::get('/checkout',[ProductController::class,'getCheckout'])->name('checkout')->middleware('auth');;
 Route::post('/checkout',[ProductController::class,'postCheckout'])->name('checkout');
