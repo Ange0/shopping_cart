@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[ProductController::class,'getProduct'])->name('product.index');
 Route::get('/add-to-cart/{id}',[ProductController::class,'getAddToCart'])->name('product.addToCart');
 Route::get('/shopping-cart',[ProductController::class,'getCart'])->name('product.shoppingCart');
-Route::get('/checkout',[ProductController::class,'getCheckout'])->name('checkout');
+Route::get('/checkout',[ProductController::class,'getCheckout'])->name('checkout')->middleware('auth');;
 Route::post('/checkout',[ProductController::class,'postCheckout'])->name('checkout');
 
 Route::group(['prefix' => 'user'],function(){

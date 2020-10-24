@@ -26,6 +26,7 @@
                 </div>
                 <button class="btn btn-success" type="submit">Sign In</button>
             </form>
+        <p>Don't have an account ? <a href="{{ route('user.signup')}}">Sign up instead !</a> </p>
         </div>
     </div>
 @endSection
