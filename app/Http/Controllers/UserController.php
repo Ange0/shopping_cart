@@ -25,6 +25,12 @@ class UserController extends Controller
         ]);
         $user->save();
         Auth::login($user);
+
+        if($request->session()->has('oldUrl')){
+            $oldUrl = $request->session()->get('oldUrl');
+            $request->session()->forget('oldUrl');
+            return redirect()->to($oldUrl);
+        }
         return redirect()->route('user.profile');
     }
 
@@ -39,7 +45,12 @@ class UserController extends Controller
         ]);
 
       if(Auth::attempt( ['email' => $request->input('email') , 'password' => $request->input('password') ] )){
-          return redirect()->route('user.profile');
+          if($request->session()->has('oldUrl')){
+              $oldUrl = $request->session()->get('oldUrl');
+              $request->session()->forget('oldUrl');
+              return redirect()->to($oldUrl);
+          }
+        return redirect()->route('user.profile');
       }
       return redirect()->back();
     }
@@ -50,7 +61,7 @@ class UserController extends Controller
 
     public function getLogout(){
         Auth::logout();
-        return redirect()->route("product.index");
+        return redirect()->route("user.signin");
     }
     
 }
